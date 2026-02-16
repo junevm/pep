@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Card - {{ student_name }}</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 40px; color: #333; }
+        .header { text-align: center; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; }
+        .school-name { font-size: 24px; font-weight: bold; color: #2c3e50; }
+        .info-table, .marks-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .info-table td { padding: 8px; font-size: 16px; }
+        .marks-table th, .marks-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .marks-table th { background-color: #f8f9fa; color: #2c3e50; }
+        .summary { background-color: #f8f9fa; padding: 15px; border-radius: 5px; border: 1px solid #ddd; }
+        .footer { margin-top: 50px; display: flex; justify-content: space-between; }
+        .signature { border-top: 1px solid #333; width: 200px; text-align: center; padding-top: 5px; }
+        .pass { color: green; font-weight: bold; }
+        .fail { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="school-name">{{ school_name|default:"SPRINGDALE PUBLIC SCHOOL" }}</div>
+    <div>ANNUAL PROGRESS REPORT</div>
+</div>
+
+<table class="info-table">
+    <tr>
+        <td><strong>Student Name:</strong> {{ student_name }}</td>
+        <td><strong>Class:</strong> {{ class_name }}</td>
+    </tr>
+    <tr>
+        <td><strong>Roll Number:</strong> {{ student_roll }}</td>
+        <td><strong>Academic Session:</strong> 2025-26</td>
+    </tr>
+</table>
+
+<table class="marks-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Subject</th>
+            <th>Marks Obtained</th>
+            <th>Maximum Marks</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sub in subjects %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ sub.name }}</td>
+            <td>{{ sub.marks }}</td>
+            <td>{{ sub.total|default:100 }}</td>
+            <td>
+                {% if sub.marks >= 90 %}A+
+                {% elif sub.marks >= 80 %}A
+                {% elif sub.marks >= 70 %}B
+                {% elif sub.marks >= 60 %}C
+                {% elif sub.marks >= 40 %}D
+                {% else %}F{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr style="font-weight: bold; background: #eee;">
+            <td colspan="2">TOTAL</td>
+            <td>{{ total_marks }}</td>
+            <td>500</td>
+            <td>-</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="summary">
+    <strong>Percentage:</strong> {{ percentage }}% &nbsp; | &nbsp;
+    <strong>Result:</strong> 
+    <span class="{% if is_passed %}pass{% else %}fail{% endif %}">
+        {% if is_passed %}PROMOTED{% else %}DETAINED{% endif %}
+    </span>
+</div>
+
+<div class="footer">
+    <div class="signature">Class Teacher</div>
+    <div class="signature">Principal</div>
+</div>
+
+</body>
+</html>

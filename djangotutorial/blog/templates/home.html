@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Home — My Site{% endblock %}
+{% block site_title %}Example Blog{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Welcome</h2>
+    <p>This page demonstrates Django template inheritance. The layout comes from <code>base.html</code>.</p>
+</section>
+
+<section>
+    <h2>Recent Posts</h2>
+    <ul>
+        <li>Post A — short description</li>
+        <li>Post B — short description</li>
+    </ul>
+</section>
+{% endblock %}

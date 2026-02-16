@@ -1,0 +1,336 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+/* CSS Variables for easy customization */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2c3e50;
+  --accent-color: #e74c3c;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+  --light-text: #666;
+  --white: #fff;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.7;
+  color: var(--text-color);
+  background: linear-gradient(135deg, var(--background-color) 0%, #e9ecef 100%);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Header */
+.portfolio-header {
+  text-align: center;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #34495e 100%);
+  color: var(--white);
+  padding: 60px 30px;
+  margin-bottom: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+}
+
+.portfolio-header h1 {
+  font-size: 3em;
+  margin-bottom: 15px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-header p {
+  font-size: 1.3em;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+}
+
+/* Sections */
+section {
+  background: var(--white);
+  margin-bottom: 40px;
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+  color: var(--secondary-color);
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  font-size: 2em;
+  font-weight: 500;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+}
+
+/* About section */
+.about-section p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: var(--light-text);
+  text-align: justify;
+}
+
+/* Skills section */
+.skills-section ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.skills-section li {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #2980b9 100%);
+  color: var(--white);
+  padding: 15px 20px;
+  border-radius: 30px;
+  font-weight: 500;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-section li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.skills-section li:hover::before {
+  left: 100%;
+}
+
+.skills-section li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+/* Projects section */
+.projects-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--accent-color)
+  );
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.project h3 {
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.project p {
+  margin-bottom: 12px;
+  color: var(--light-text);
+  line-height: 1.6;
+}
+
+/* Contact section */
+.contact-section p {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+}
+
+.contact-section p::before {
+  content: "📧";
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.contact-section a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+.contact-section a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s;
+}
+
+.contact-section a:hover::after {
+  width: 100%;
+}
+
+.contact-section a:hover {
+  color: var(--accent-color);
+}
+
+/* Footer */
+.portfolio-footer {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #34495e 100%);
+  color: var(--white);
+  border-radius: var(--border-radius);
+  margin-top: 40px;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.portfolio-footer p {
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .portfolio-header {
+    padding: 40px 20px;
+  }
+
+  .portfolio-header h1 {
+    font-size: 2.2em;
+  }
+
+  .portfolio-header p {
+    font-size: 1.1em;
+  }
+
+  section {
+    padding: 25px 20px;
+    margin-bottom: 25px;
+  }
+
+  section h2 {
+    font-size: 1.6em;
+  }
+
+  .skills-section ul {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-section {
+    grid-template-columns: 1fr;
+  }
+
+  .project {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-header h1 {
+    font-size: 1.8em;
+  }
+
+  section {
+    padding: 20px 15px;
+  }
+}
